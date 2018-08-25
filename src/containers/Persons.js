@@ -9,10 +9,6 @@ import * as actionTypes from '../store/actions';
 
 class Persons extends Component {
 
-    componentDidUpdate(){
-        console.log(this.props);
-    }
-
     render () {
         return (
             <div>
@@ -37,7 +33,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>{
     return{
-        onAddPerson: ()=>dispatch({type: actionTypes.ADD_USER}),
+        onAddPerson: (name,age)=>dispatch({
+            type: actionTypes.ADD_USER, 
+            personInfo:{
+                name:name, 
+                age:age}
+            }),
         onDeletePerson: (id)=>dispatch({type: actionTypes.DEL_USER, personId: id}),
     };
 };
